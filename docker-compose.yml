@@ -1,0 +1,24 @@
+version: '3'
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    ports:
+      - '80:80'
+  ap1:
+    build:
+      context: .
+      dockerfile: ap/Dockerfile
+    environment:
+      - SERVER_NAME=ap1
+    ports:
+      - '10080:8080'
+  ap2:
+    build:
+      context: .
+      dockerfile: ap/Dockerfile
+    environment:
+      - SERVER_NAME=ap2
+    ports:
+      - '10081:8080'
